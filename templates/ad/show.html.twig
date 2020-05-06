@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ad.title}}
+{% endblock %}
+
+{% block body %}
+
+<div class="ad-title" style="background-image: url ({{ ad.coverImage }})">
+    <div class="container">
+        <h1>{{ad.title}}</h1>
+        <p>{{ad.introduction}}</p>
+        <p class="h2">
+            Pour <strong>{{ad.price}}&euro;
+            </strong>
+        </p>
+        <a href="#" class="btn btn-primary">Ajouter au panier !</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mb-3">
+            <!-- description de l'article -->
+            {{ ad.content | raw }}
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col-4">
+                    <img src="http://placehold.it/64x64" alt="Avatar de l'utilisateur">
+                </div>
+                <div class="col">
+                    <h3>Utilisateur</h3>
+                    <span class="badge badge-primary">x annonce(s)</span>
+                </div>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio corporis voluptate natus asperiores beatae sint commodi quisquam, dicta et dignissimos.</p>
+            <p>Possimus officia optio quisquam. Laborum distinctio soluta minima aliquid ullam cupiditate nam odio, animi enim saepe nostrum sapiente necessitatibus asperiores?</p>
+            <p>Ex explicabo officiis soluta aliquid magnam vel laboriosam cumque, odit itaque fugit dolores, molestias, error accusamus? Nostrum officiis optio quod.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
