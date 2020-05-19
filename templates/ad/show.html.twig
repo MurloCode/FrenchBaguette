@@ -15,6 +15,12 @@
             </strong>
         </p>
         <a href="#" class="btn btn-primary">Ajouter au panier !</a>
+
+        {% if app.user and app.user == ad.author %}
+            <a href="{{ path('ads_edit', {'slug': ad.slug}) }}" class="btn btn-secondary">Modifier l'article</a>
+
+            <a href="{{ path('ads_delete', {'slug': ad.slug})}}" class="btn btn-danger" onclick="returnconfirm(`Êtes vous sur de vouloir supprimer l'annonce : {{ad.title}} ?`)">Supprimer l'annonce</a>
+        {% endif %}
     </div>
 </div>
 
@@ -25,18 +31,21 @@
             {{ ad.content | raw }}
         </div>
         <div class="col">
-            <div class="row">
-                <div class="col-4">
-                    <img src="http://placehold.it/64x64" alt="Avatar de l'utilisateur">
+            {% set a = ad.author %}
+            <div class="row mb-3 align-items-center">
+                <div class="col-3">
+                    <a href="{{ path('user_show',{'slug': a.slug}) }}">
+                        <img src="{{a.picture}}" class="avatar avatar-medium" alt="Avatar de {{a.fullName}}">
+                    </a>
                 </div>
                 <div class="col">
-                    <h3>Utilisateur</h3>
-                    <span class="badge badge-primary">x annonce(s)</span>
+                    <a href="{{ path('user_show',{'slug': a.slug}) }}">
+                        <h3>{{a.fullName}}</h3>
+                    </a>
+                    <span class="badge badge-primary">{{a.ads | length}} annonces</span>
                 </div>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio corporis voluptate natus asperiores beatae sint commodi quisquam, dicta et dignissimos.</p>
-            <p>Possimus officia optio quisquam. Laborum distinctio soluta minima aliquid ullam cupiditate nam odio, animi enim saepe nostrum sapiente necessitatibus asperiores?</p>
-            <p>Ex explicabo officiis soluta aliquid magnam vel laboriosam cumque, odit itaque fugit dolores, molestias, error accusamus? Nostrum officiis optio quod.</p>
+            {{ a.description | raw}}
         </div>
     </div>
 </div>

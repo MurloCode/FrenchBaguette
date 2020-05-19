@@ -1,0 +1,33 @@
+{% set url = path('ads_show', {'slug': ad.slug}) %}
+
+<div class="col-md-3">
+    <div class="card bg-light mb-3">
+        <div class="card-header text-center">
+            Le Mug ! <strong>{{ ad.price }}&euro; /lot de 2</strong> <br>
+            <small>Pas encore noté</small>
+        </div>    
+
+        <a href="{{ url }}">
+            <img src="http://placehold.it/1000x400" alt="Image du mug"
+            style="height: 200px; width: 100%; display: block">
+        </a>
+
+        <div class="card-body">
+            <h4 class="card-title">
+                <a href="{{ url }}">
+                    {{ ad.title }}
+                </a>
+            </h4>
+            <p class="card-text">
+                {{ ad.introduction }}
+            </p>
+            <a href="{{ url }}" class="btn 
+            btn-secondary">En savoir plus !</a>
+            {% if app.user and app.user == ad.author %}
+                <a href="{{ path('ads_edit', {'slug': ad.slug}) }}" class="btn btn-secondary">Modifier l'article</a>
+
+                <a href="{{ path('ads_delete', {'slug': ad.slug})}}" class="btn btn-danger" onclick="returnconfirm(`Êtes vous sur de vouloir supprimer l'annonce : {{ad.title}} ?`)">Supprimer l'annonce</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

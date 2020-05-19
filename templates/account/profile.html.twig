@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du profil utilisateur{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Modification du profil</h1>
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+        <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+
+        {{ form_end(form) }}
+
+        <hr class="my-4">
+
+        
+    </div>
+
+{% endblock %}
