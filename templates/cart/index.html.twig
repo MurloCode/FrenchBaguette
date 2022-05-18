@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!
+{% endblock %}
+
+{% block body %}
+    <div class="bg-light p-3">
+        <h1>Votre panier</h1>
+    </div>
+
+    {% if items | length > 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Prix (&euro;)</th>
+                    <th>Quantité</th>
+                    <th>Total (&euro;)</th>
+                    <th>Retirer</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.product.title }}</td>
+                        <td>{{ item.product.price }}</td>
+                        <td>
+                            {% if item.quantity > 1 %}
+                            <a href="{{ path('cart_remove_one', {'id': item.product.id}) }}" class="btn btn-danger btn-sm">  -  </a>  {{ item.quantity }}                                
+                            {% else %}
+                                <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-danger btn-sm disabled">  -  </a>  {{ item.quantity }} 
+                            {% endif %}
+                            <a href="{{ path('cart_add', {'id': item.product.id}) }}" class="btn btn-success btn-sm"> + </a>
+                        </td>
+                        <td>{{ item.product.price * item.quantity }}</td>
+                        <td>
+                            <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Total : 
+                    </td>
+                    <td>{{ total }} &euro;</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    {% else %}
+    <p>Surprise, c'est vide !</p>
+    {% endif %}
+    <a href="{# chemin vers le formulaire de validation {{ path('#') }} #}" class="btn btn-primary float-right mr-5">Poursuivre   <i class="fas fa-arrow-right"></i></a>
+{% endblock %}

@@ -23,17 +23,18 @@ class AnnonceType extends ApplicationType
             ->add('slug', TextType::class, $this->getconfiguration("Adresse web (automatique si non précisée)", "Tapez l'adresse web selon l'exemple suivant: mon-nom-d-article-! (automatique si non précisée)", [
                 'required' => false
             ]))
-            ->add('coverImage', UrlType::class, $this->getConfiguration("URL de l'image principale", "Donnez l'adresse d'une image en lien avec l'article"))
+            ->add('coverImage', TextType::class, $this->getConfiguration("URL de l'image principale", "Donnez l'adresse d'une image en lien avec l'article"))
             ->add('introduction', TextType::class, $this->getConfiguration("Introduction", "Renseigner une description de l'article"))
             ->add('content', TextareaType::class, $this->getConfiguration("Description détaillée", "Tapez une description complémentaire des informations techniques et du type de produit"))
             ->add('price', MoneyType::class, $this->getConfiguration("Prix de l'article", "Indiquez le prix de l'article"))
 
+            /* Formulaire multi images
             ->add('images',CollectionType::class,[
                 'entry_type' => ImageType::class,
                 'allow_add' => true,
                 'allow_delete' => true
                 ]
-            )
+            )*/
         ;
     }
 

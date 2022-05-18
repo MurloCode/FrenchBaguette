@@ -1,3 +1,4 @@
+{# page du produit détaillé #}
 {% extends 'base.html.twig' %}
 
 {% block title %}
@@ -5,7 +6,9 @@
 {% endblock %}
 
 {% block body %}
-
+ <div class="rounded mx-auto d-block mt-4 col-lg-9">
+    <img class="card-img-top img-fluid" src="{{ ad.coverImage }}" alt="{{ ad.title }}">
+</div>
 <div class="ad-title" style="background-image: url ({{ ad.coverImage }})">
     <div class="container">
         <h1>{{ad.title}}</h1>
@@ -14,7 +17,7 @@
             Pour <strong>{{ad.price}}&euro;
             </strong>
         </p>
-        <a href="#" class="btn btn-primary">Ajouter au panier !</a>
+        <a href="{# chemin du produit #}{{ path('cart_add', {'id': ad.id}) }}" class="btn btn-primary">Ajouter au panier !</a>
 
         {% if app.user and app.user == ad.author %}
             <a href="{{ path('ads_edit', {'slug': ad.slug}) }}" class="btn btn-secondary">Modifier l'article</a>
@@ -30,6 +33,7 @@
             <!-- description de l'article -->
             {{ ad.content | raw }}
         </div>
+        {# affichage de l'auteur de l'annonce (feature v.2)
         <div class="col">
             {% set a = ad.author %}
             <div class="row mb-3 align-items-center">
@@ -46,8 +50,11 @@
                 </div>
             </div>
             {{ a.description | raw}}
-        </div>
+        </div> #}
     </div>
 </div>
+
+<div class="container mb-5 mt-5"></div>
+<div class="container mb-5 mt-5"></div>
 
 {% endblock %}

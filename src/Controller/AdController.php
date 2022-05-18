@@ -136,7 +136,7 @@ class AdController extends AbstractController
     }
 
     /**
-     * Permet de supprimer une annonce
+     * Permet de supprimer un produit
      * 
      * @Route("/ads/{slug}/delete", name="ads_delete")
      * @Security("is_granted('ROLE_USER') and user ==ad.getAuthor()", message="Vous n'avez pas le droit d'accéder à cette ressource")

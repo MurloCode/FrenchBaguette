@@ -47,4 +47,16 @@ class AdRepository extends ServiceEntityRepository
         ;
     }
     */
+    /**
+     * Permet de renvoyer les 4 derniers articles ajouter au site sur la homepage a partir du HomeController
+     * @return Ad[] Returns an array of Product objects
+     */
+    public function findLastProductAdded()
+    {
+        return $this->createQueryBuilder('ad')
+            ->orderBy('ad.id', 'DESC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -9,7 +9,9 @@
             <div class="col-3 text-center">
                 <img src="{{user.picture}}" alt="Avatar de {{user.fullName}}" class="avatar mb-3">
                 <br>
-                <span class="badge badge-primary">{{user.ads | length}} annonces</span>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <span class="badge badge-primary">{{user.ads | length}} annonces</span>
+                {% endif %}
             </div>
             <div class="col-9">
                 <h1>{{user.fullName}}</h1>
@@ -17,30 +19,34 @@
                 {% if user is same as(app.user) %}
                     <div class="mt-3">
                         <a href="{{ path('account_profile') }}" class="btn btn-primary mr-2 mb-2">Modifier mes informations</a>
-                        <a href="{{ path('account_password')}}" class="btn btn-primary mb-2">Modifier mon mot de passe /!\</a>
+                        <a href="{{ path('account_password')}}" class="btn btn-primary mb-2"><i class="fas fa-exclamation-triangle"></i>    Modifier mon mot de passe   <i class="fas fa-exclamation-triangle"></i></a>
                     </div>
                 {% endif %}
             </div>
         </div>
 
         {{user.description | raw}}
+        {% if is_granted('ROLE_ADMIN') %}
 
-        <hr>
+            <hr>
 
-        <h2>Les annonces de {{user.fullName}}</h2>
+            <h2>Les annonces de {{user.fullName}}</h2>
 
-        {% if user.ads | length > 0 %}
-            <div class="row">
-                {% for ad in user.ads %}
-                    {% include 'ad/_ad.html.twig' %}
-                {% endfor %}
-            </div>
-        {% else %}
-            <div class="alert alert-warning">
-                <p>
-                    <strong>{{user.fullName}}</strong> n'a pas encore d'annonce sur le site !
-                </p>
-            </div>
+            {% if user.ads | length > 0 %}
+                <div class="row">
+                    {% for ad in user.ads %}
+                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                            {% include 'ad/_ad.html.twig' %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-warning">
+                    <p>
+                        <strong>{{user.fullName}}</strong> n'a pas encore d'article sur le site !
+                    </p>
+                </div>
+            {% endif %}
         {% endif %}
     </div>
 

@@ -6,120 +6,55 @@
 
 {% block body %}
 <div class="container">
-    <div class="jumbotron mt-3">
-        <h1 class="display-3">Bienvenue sur FrenchBaguettes !</h1>
+    <div class="jumbotron mt-3 bg-white casewhite" >
+        <h1 class="display-4" >Bienvenue sur FrenchBaguettes !!</h1>
         <p class="lead">Nous vous proposons un choix multiple de Goodies et T-shirt pour soutenir la cause des batteurs en folie !</p>
-        <hr class="my-4">
+        <hr class="hrfb my-4">
         <p>Vous êtes batteur ? Vous souhaitez montrer votre passion ? leurs dire "Hey ! J'suis batteur !j'te fais un drum solo ? ou tu préfére un duo ?".</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Voir le catalogue !</a>
+            <a class="btn btn-primary btn-lg" href="{{ path('ads_index' )}}" role="button">Voir le catalogue !</a>
         </p>
     </div>
 
-    <h2 class="h1 mt-3 mb-4">Notre top du moment !</h2>
-
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card bg-light mb-3">
-                <div class="card-header text-center">
-                    Le Mug ! <strong>29&euro; /lot de 2</strong> <br>
-                    <small>Pas encore noté</small>
-                </div>    
-
-                <img src="http://placehold.it/1000x400" alt="Image du mug"
-                style="height: 200px; width: 100%; display: block">
-
-                <div class="card-body">
-                    <h4 class="card-title">
-                        Mug 100% porcelaine.
-                    </h4>
-                    <p class="card-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ex at laborum illum corrupti animi fugiat numquam amet pariatur aspernatur.
-                    </p>
-                    <a href="#" class="btn btn-secondary">En savoir plus !</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-light mb-3">
-                <div class="card-header text-center">
-                    Le Mug ! <strong>29&euro; /lot de 2</strong> <br>
-                    <small>Pas encore noté</small>
-                </div>    
-
-                <img src="http://placehold.it/1000x400" alt="Image du mug"
-                style="height: 200px; width: 100%; display: block">
-
-                <div class="card-body">
-                    <h4 class="card-title">
-                        Mug 100% porcelaine.
-                    </h4>
-                    <p class="card-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ex at laborum illum corrupti animi fugiat numquam amet pariatur aspernatur.
-                    </p>
-                    <a href="#" class="btn btn-secondary">En savoir plus !</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card bg-light mb-3">
-                <div class="card-header text-center">
-                    Le Mug ! <strong>29&euro; /lot de 2</strong> <br>
-                    <small>Pas encore noté</small>
-                </div>    
-
-                <img src="http://placehold.it/1000x400" alt="Image du mug"
-                style="height: 200px; width: 100%; display: block">
-
-                <div class="card-body">
-                    <h4 class="card-title">
-                        Mug 100% porcelaine.
-                    </h4>
-                    <p class="card-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ex at laborum illum corrupti animi fugiat numquam amet pariatur aspernatur.
-                    </p>
-                    <a href="#" class="btn btn-secondary">En savoir plus !</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <h2 class="h1 mt-3 mb-4">Nos favoris !</h2>
-
+    <h2 class="h1 my-5">Nos favoris !</h2>
     
+    <div class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="http://localhost:8000/ads/le-t-shirt-taille-unique-magique-french-baguettes">
+                    <img src="/img/02_Man.png" class="d-block w-100 carouselfirst" alt="...">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="http://localhost:8000/ads/cannette-de-soda-reutilisable-thermos-inoxydable">
+                    <img src="/img/free soda can.png" class="d-block w-100 carouselfirst" alt="...">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="http://localhost:8000/ads/le-mug">
+                    <img src="/img/free_mug_mock-up.png" class="d-block w-100 carouselfirst" alt="...">
+                </a>
+            </div>
+        </div>
+    </div>  
+
+    <h2 class="h1 my-5">Nos Nouveautés !</h2>
+
     <div class="row">
-        <div class="col">
-            <div class="card border-secondary mb-3">
-                <div class="card-body">
-                    <h4 class="card-title">La canette Termos</h4>
-
-                    <hr>
-
-                    <div class="card-text">
-                        <img src="http://placehold.it/64x64" alt="image de la canette termos"
-                        class="float-left mr-3">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, odit.</p>
-                        <a href="#" class="btn btn-success float-right">En savoir plus !</a>
-                    </div>
+        {% for ad in lastProducts %}
+            {% if loop.index <= 4 %}
+                <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                    {% include 'ad/_ad.html.twig' %}
                 </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card border-secondary mb-3">
-                <div class="card-body">
-                    <h4 class="card-title">La canette Termos</h4>
-
-                    <hr>
-
-                    <div class="card-text">
-                        <img src="http://placehold.it/64x64" alt="image de la canette termos"
-                        class="float-left mr-3">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, odit.</p>
-                        <a href="#" class="btn btn-success float-right">En savoir plus !</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+            {% endif %}
+        {% endfor %}
     </div>
+       
+    <div class="container mb-5 mt-5"></div>
 </div>
 {% endblock %}

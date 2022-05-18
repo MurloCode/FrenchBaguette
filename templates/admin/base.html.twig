@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>FrenchBaguettes!! - {% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/fontawesome-free-5.13.0-web/css/all.css">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% include 'admin/partials/header.html.twig' %}
+
+        {% block body %}{% endblock %}
+
+        {% include 'admin/partials/footer.html.twig' %}
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/popper.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        {% block javascripts %}{% endblock %}
+        <script>
+            jQuery(function(){
+                $(function () {
+                    $(window).scroll(function () {
+                        if ($(this).scrollTop() > 200 ) { 
+                            $('#scrollUp').css('right','10px');
+                        } else { 
+                            $('#scrollUp').removeAttr( 'style' );
+                        }
+ 
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

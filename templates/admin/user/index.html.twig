@@ -1,0 +1,50 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1 class="my-5">Gestion des utilisateurs</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Photo de profil</th>
+                <th>Nom Utilisateurs</th>
+                <th>Adresse Email</th>
+                <th>Rôles</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {# boucle utilisateurs#}
+            {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td><img src="{{user.picture}}" class="avatar avatar-mini"></img></td>
+                <td>{{user.fullName}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    {# boucle sur les rôles #}
+                    {% for role in user.roles %}
+                        {% if role == "ROLE_USER" %}
+                            Utilisateur
+                        {% elseif role == "ROLE_ADMIN" %}
+                            Administrateur
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{path ('admin_user_edit', {'id': user.id}) }}" class="btn btn-primary"><i class="latin">Modifier</i></a>
+                    <a href="{{path ('admin_user_delete', {'id': user.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="container mb-5 mt-5"></div>
+<div class="container mb-5 mt-5"></div>
+
+{% endblock %}

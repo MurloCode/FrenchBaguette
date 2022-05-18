@@ -2,45 +2,27 @@
 
 namespace App\Controller;
 
+use App\Repository\AdRepository;
+use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class HomeController extends Controller {
-
-    /**
-     * @Route("/hello/{prenom}/age/{age}", name="hello")
-     * @Route("/coucou", name="hello_base")
-     * @Route("/hello/{prenom}", name="hello_prenom")
-     * 
-     * Montre la page qui dit bonjour
-     * 
-     * @return void
-     */
-    public function hello($prenom = "anonyme", $age = 0){
-        return $this->render(
-            'hello.html.twig',
-            [
-                'prenom' => $prenom,
-                'age' => $age
-            ]
-        );
-    }
-    
+   
     /**
      * @Route("/", name="homepage")
      */
-    public function home(){
-        $prenoms = ["Quentin" => 28, "Gwen" => 29, "Kiki" => 27];
+    public function home(AdRepository $repo){
+        //permet d'afficher tous les articles
+        $ads = $repo->findAll();
+        //Permet d'afficher les derniers articles ajoutés au site depuis le AdRepository
+        $lastProducts = $repo->findLastProductAdded();
 
-        return $this->render(
-            'home.html.twig',
-            [ 
-                'title' => "Bla lbabla",
-                'age' => 12,
-                'tableau' => $prenoms
-            ]
-        );
+        return $this->render('home.html.twig', [
+            'ads' => $ads,
+            'lastProducts' => $lastProducts
+        ]);
     }
 }
 

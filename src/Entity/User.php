@@ -47,7 +47,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Url(message="Veuillez donner une URL valide pour votre avatar !")
+     * @Assert\NotBlank(message="Veuillez donner une URL valide pour votre avatar !")
      */
     private $picture;
 

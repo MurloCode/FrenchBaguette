@@ -1,4 +1,63 @@
-div.container {
+/* Polices */
+@font-face {
+    font-family: 'Kuroneko-Kaps-DEMO-Regular';
+    src:url('/police/Kuroneko-Kaps-DEMO-Regular.ttf.woff') format('woff'),
+        url('/police/Kuroneko-Kaps-DEMO-Regular.ttf.svg#Kuroneko-Kaps-DEMO-Regular') format('svg'),
+        url('/police/Kuroneko-Kaps-DEMO-Regular.ttf.eot'),
+        url('/police/Kuroneko-Kaps-DEMO-Regular.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Book Antiqua', arial;
+}
+
+.carouselfirst {
+    height: 590px; 
+    width: 100%; 
+    display: block; 
+    object-fit:cover;
+}
+
+h1,h2 { 
+    font-family: 'Kuroneko-Kaps-DEMO-Regular';
+ } 
+
+ .hrfb {
+    line-height: 3;
+    background-color: black;
+ }
+ 
+ html {
+    position: relative;
+    min-height: 100%;
+}
+ 
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+}
+
+.footer2 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-right: 20%;
+    height: auto;
+}
+/* bouton scroll Up */
+#scrollUp
+{
+position: fixed;
+bottom : 80px;
+right: -100px;
+opacity: 0.5;
+} 
+
+div.container, div.container-fluid {
     margin-top: 20px;
 }
 
@@ -7,8 +66,13 @@ div.ad-title {
 }
 
 div.ad-title h1, div.ad-title p {
-    color: white;
-    text-shadow: 3px 3px 3px rgb(0,0,0,0.5);
+    font-family: 'Kuroneko-Kaps-DEMO-Regular'
+}
+
+div.ad-title .btn {
+    margin-top: 2em;
+    font-size: 1,5em;
+    line-height: 1,5em;
 }
 
 .avatar {
@@ -38,5 +102,63 @@ div.ad-title h1, div.ad-title p {
 }
 
 .bg-blackfb {
-    background-color: black;
+    background-image: linear-gradient(to right, black, #3B2928, black);
+}
+
+.btnsearchred {
+    background-color: #933232;
+    color: white;
+}
+
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+     
+}
+
+.casecard{
+    border:none;
+    background-color:#f9ecec;
+}
+/* Propriété de mes cards produits */
+.cardmaxheight {
+    height: 500px;
+    border-radius: 0%;
+}
+
+.overflow-ellipsis {
+    text-overflow: ellipsis;
+  }
+
+.redtext {
+    color: #933231;
+}
+
+.redtext:hover {
+    color: #611f1f;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #933231;
+    border-color: #933231;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #611f1f;
+    border-color: #611f1f;
+}
+
+.icoshop {
+    display: flex;
+}
+
+.dashboard-title {
+    margin-top: 15px;
+}
+
+.centercard {
+    justify-content: space-around;
 }

@@ -2,11 +2,11 @@
 
 {% block title %}Création d'une annonce{% endblock %}
 {# ici on remplace form_theme form _self par le chemin de notre _collection.html.twig #}
-{% form_theme form 'ad/_collection.html.twig' %}
+{# fonctionnalité d'ajout d'images supplémentaire {% form_theme form 'ad/_collection.html.twig' %}#}
 
 {% block body %}
 
-    <div class="container">
+    <div class="container mb-5">
         <h1>Créer un nouveau produit</h1>
 
         {{ form_start(form) }}

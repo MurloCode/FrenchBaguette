@@ -5,6 +5,7 @@
         <title>FrenchBaguettes!! - {% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="/css/bootstrap.min.css">
         <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/fontawesome-free-5.13.0-web/css/all.css">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -18,5 +19,20 @@
         <script src="/js/popper.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         {% block javascripts %}{% endblock %}
+        <!-- script pour remonter en haut de page -->
+        <script>
+            jQuery(function(){
+                $(function () {
+                    $(window).scroll(function () {
+                        if ($(this).scrollTop() > 200 ) { 
+                            $('#scrollUp').css('right','10px');
+                        } else { 
+                            $('#scrollUp').removeAttr( 'style' );
+                        }
+ 
+                    });
+                });
+            });
+        </script>
     </body>
 </html>
