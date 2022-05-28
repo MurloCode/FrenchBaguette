@@ -45,10 +45,10 @@
 
     <h2 class="h1 my-5">Nos Nouveautés !</h2>
 
-    <div class="row">
+    <div class="row centercard">
         {% for ad in lastProducts %}
             {% if loop.index <= 4 %}
-                <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
                     {% include 'ad/_ad.html.twig' %}
                 </div>
             {% endif %}
